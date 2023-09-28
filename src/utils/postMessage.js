@@ -2,7 +2,7 @@
  * @Author: wy
  * @Date: 2023-09-26 16:44:07
  * @LastEditors: wy
- * @LastEditTime: 2023-09-27 14:10:41
+ * @LastEditTime: 2023-09-28 17:40:24
  * @FilePath: /笔记/cms/ms-project/src/utils/postMessage.js
  * @Description:
  */
@@ -15,7 +15,13 @@ export class Messager {
     this.messageListener = (event) => {
       // 监听方法的类型和调用方法，对应的方法存在在actions里面
       const type = event.data && event.data.type;
-      console.log('=====11222', event.origin, this.targetOrigin, type);
+      console.log(
+        '=====11222',
+        event.origin,
+        this.targetOrigin,
+        type,
+        this.actions[type]
+      );
       if (event.origin === this.targetOrigin && type && this.actions[type]) {
         this.actions[type](event.data.value);
       }

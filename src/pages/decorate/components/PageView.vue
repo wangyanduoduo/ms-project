@@ -2,7 +2,7 @@
  * @Author: wy
  * @Date: 2023-09-22 11:40:34
  * @LastEditors: wy
- * @LastEditTime: 2023-09-27 14:09:05
+ * @LastEditTime: 2023-09-28 17:53:18
  * @FilePath: /笔记/cms/ms-project/src/pages/decorate/components/PageView.vue
  * @Description: 
 -->
@@ -23,7 +23,7 @@
           frameborder="0"
           allowfullscreen
           width="100%"
-          :height="previewHeight"
+          :height="previewHeight || '300px'"
           @load="onloadH5"
         />
       </div>

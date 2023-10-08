@@ -2,7 +2,7 @@
  * @Author: wy
  * @Date: 2023-09-14 16:55:57
  * @LastEditors: wy
- * @LastEditTime: 2023-09-26 16:27:22
+ * @LastEditTime: 2023-09-28 19:23:18
  * @FilePath: /笔记/cms/ms-project/vue.config.js
  * @Description:
  */
@@ -11,9 +11,10 @@ module.exports = {
   publicPath: '/cms-manage/',
   outputDir: 'build',
   devServer: {
+    host: '127.0.0.1',
     hot: true,
     open: true,
-    port: 3012,
+    port: 3011,
     // openPage: '/cms-manage', // 指定浏览器打开时的导航页面
     proxy: {
       '/api/atlas-cms': {

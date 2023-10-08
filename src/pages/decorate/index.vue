@@ -1,8 +1,17 @@
+<!--
+ * @Author: wy
+ * @Date: 2023-09-22 11:39:45
+ * @LastEditors: wy
+ * @LastEditTime: 2023-10-08 17:42:36
+ * @FilePath: /笔记/cms/ms-project/src/pages/decorate/index.vue
+ * @Description: 
+-->
 <template>
   <div class="home">
     <page-head></page-head>
     <page-left></page-left>
     <page-view></page-view>
+    <page-right></page-right>
   </div>
 </template>
 
@@ -11,6 +20,7 @@ import { mapMutations } from 'vuex';
 import { getCmsPageById } from '@/api/activity';
 import PageHead from './components/PageHead';
 import PageLeft from './components/PageLeft';
+import PageRight from './components/PageRight';
 import PageView from './components/PageView';
 import { createRandomId } from '@/utils';
 export default {
@@ -18,6 +28,7 @@ export default {
     PageHead,
     PageLeft,
     PageView,
+    PageRight,
   },
   methods: {
     ...mapMutations(['UPDATE_COMPONENT']),

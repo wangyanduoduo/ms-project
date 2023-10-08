@@ -2,7 +2,7 @@
  * @Author: wy
  * @Date: 2023-09-22 11:40:34
  * @LastEditors: wy
- * @LastEditTime: 2023-09-22 16:13:02
+ * @LastEditTime: 2023-10-08 14:41:53
  * @FilePath: /笔记/cms/ms-project/src/pages/decorate/components/PageLeft.vue
  * @Description: 
 -->
@@ -46,7 +46,7 @@
 </template>
 
 <script>
-import { mapMutations, mapGetters } from 'vuex';
+import { mapMutations, mapGetters, mapState, mapActions } from 'vuex';
 import componentList from '@/config/component-list';
 export default {
   data() {
@@ -56,13 +56,20 @@ export default {
     };
   },
   computed: {
+    ...mapState(['addComponentIndex', 'dragComponent']),
     // 已使用的组件数量
     componentMap() {
       return mapGetters(['pageComponentTotalMap']);
     },
   },
   methods: {
-    ...mapMutations(['SET_DRAG_STATE', 'SET_DRAG_COMPONENT']),
+    ...mapMutations([
+      'SET_DRAG_STATE',
+      'SET_DRAG_COMPONENT',
+      'SET_DRAG_INDEX',
+      'VIEW_SET_ACTIVE',
+    ]),
+    ...mapActions(['pageChange']),
     draggableEnable() {
       return true;
     },
@@ -72,6 +79,19 @@ export default {
       return component;
     },
     onDragend() {
+      // 停止拖拽
+      let addIndex = this.addComponentIndex;
+      if (addIndex !== null) {
+        const params = {
+          index: addIndex,
+          type: 'add',
+          data: this.dragComponent,
+        };
+
+        this.pageChange(params);
+        this.SET_DRAG_INDEX(null);
+        this.VIEW_SET_ACTIVE(addIndex);
+      }
       this.SET_DRAG_STATE(false);
     },
   },
